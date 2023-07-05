@@ -1,5 +1,6 @@
 package com.example.cinematicketreservation.presentation.ui.screen.home
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -26,8 +27,8 @@ import androidx.compose.ui.unit.dp
 import com.example.cinematicketreservation.R
 
 @Composable
-fun HomeBackGround() {
-    val saturationFactor = 2f
+fun HomeBackGround(@DrawableRes backgroundImage: Int) {
+    val saturationFactor = 1.1f
     val colorMatrix = floatArrayOf(
         0.213f + 0.787f * saturationFactor,
         0.715f - 0.715f * saturationFactor,
@@ -74,7 +75,7 @@ fun HomeBackGround() {
         )
         Image(
             colorFilter = ColorFilter.colorMatrix(ColorMatrix(colorMatrix)),
-            painter = painterResource(id = R.drawable.image_1),
+            painter = painterResource(id = backgroundImage),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -91,7 +92,7 @@ fun HomeBackGround() {
 @Preview(showSystemUi = true)
 @Composable
 fun HomeBackgroundPreview() {
-    HomeBackGround()
+    HomeBackGround(R.drawable.image_1)
 }
 
 fun Modifier.fadingEdge(brush: Brush) = this
