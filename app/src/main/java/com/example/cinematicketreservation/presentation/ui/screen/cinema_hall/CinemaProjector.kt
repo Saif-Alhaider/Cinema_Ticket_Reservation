@@ -22,7 +22,7 @@ fun CinemaProjector() {
     Box(
         Modifier
             .fillMaxWidth()
-            .height(200.dp)
+            .height(150.dp)
             .background(Color.Black)
             .padding(10.dp)
             .background(Color.Red.copy(alpha = .6f))
@@ -31,7 +31,7 @@ fun CinemaProjector() {
             .fillMaxSize(), contentDescription = "cinema screen", onDraw = {
 
             val canvasWidth = size.width
-            val arcHeight = 200f
+            val arcHeight = 150f
             drawArc(
                 color = Color.Black,
                 startAngle = 0f,

@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -21,10 +22,9 @@ import java.util.Random
 fun SeatsSection() {
     Column(
         Modifier
-            .fillMaxSize()
             .background(Color.Black)
     ) {
-        CinemaProjector()
+
 
         LazyVerticalGrid(columns = GridCells.Fixed(3)) {
             itemsIndexed(generateSeatList()) { index, seatId ->
