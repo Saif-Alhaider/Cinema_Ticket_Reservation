@@ -43,7 +43,7 @@ fun HomeContent(
     LazyColumn(Modifier.background(
         Brush.verticalGradient(
             0F to Color.Transparent,
-            .4f to Color(0xFF2E2E2E),
+            .3f to Color.Black,
             .8f to Color.White,
             1F to Color.White,
         )

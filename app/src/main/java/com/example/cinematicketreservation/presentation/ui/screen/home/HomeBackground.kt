@@ -61,12 +61,6 @@ fun HomeBackGround(@DrawableRes backgroundImage: Int) {
         contentAlignment = Alignment.TopStart,
         modifier = Modifier.fillMaxSize()
         ) {
-        Spacer(
-            modifier = Modifier
-                .fillMaxHeight()
-                .fillMaxWidth().blur(100.dp)
-
-        )
         Image(
             colorFilter = ColorFilter.colorMatrix(ColorMatrix(colorMatrix)),
             painter = painterResource(id = backgroundImage),
