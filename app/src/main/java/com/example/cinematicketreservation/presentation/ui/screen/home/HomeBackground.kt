@@ -5,6 +5,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
@@ -57,21 +59,13 @@ fun HomeBackGround(@DrawableRes backgroundImage: Int) {
     )
     Box(
         contentAlignment = Alignment.TopStart,
-
+        modifier = Modifier.fillMaxSize()
         ) {
         Spacer(
             modifier = Modifier
-                .height(300.dp)
-                .fillMaxWidth()
-                .background(
-                    Brush.radialGradient(
-                        0F to Color.Black,
-                        .5F to Color.Black,
-                        1F to Color.Black.copy(alpha = 0.85f),
-                        tileMode = TileMode.Clamp
-                    )
-                )
-                .alpha(0.5f)
+                .fillMaxHeight()
+                .fillMaxWidth().blur(100.dp)
+
         )
         Image(
             colorFilter = ColorFilter.colorMatrix(ColorMatrix(colorMatrix)),

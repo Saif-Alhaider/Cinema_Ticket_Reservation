@@ -1,5 +1,6 @@
 package com.example.cinematicketreservation.presentation.ui.screen.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,6 +11,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +40,14 @@ fun HomeContent(
     val scaledImageWidth = imageWidth + imageWidth * 0.07f
     val centerCarouselPadding =
         PaddingValues(horizontal = (screenWidth.div(2).dp - scaledImageWidth.div(2)))
-    LazyColumn(){
+    LazyColumn(Modifier.background(
+        Brush.verticalGradient(
+            0F to Color.Transparent,
+            .4f to Color(0xFF2E2E2E),
+            .8f to Color.White,
+            1F to Color.White,
+        )
+    )){
         item {
             Box() {
                 HomeBackGround(screenState.value.imageRes)

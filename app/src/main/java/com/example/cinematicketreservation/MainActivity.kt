@@ -50,9 +50,6 @@ class MainActivity : ComponentActivity() {
                         composable(AppDestination.MovieDetails.route) { MovieDetails() }
                         composable(AppDestination.CinemaHall.route) { CinemaHall() }
                     }
-//                    Box(Modifier.padding(innerPadding)) {
-//                        HomeScreen()
-//                    }
                 }
             }
         }
