@@ -5,4 +5,12 @@
     <string name="coming_soon">قريباً</string>
     <string name="fantasy">خيالي</string>
     <string name="adventure">مغامرات</string>
+    <string name="morbius">موربيوس</string>
+    <string name="morbius_description">يعاني من مرض خطير مع اضطراب دم نادر ، وعازمًا على إنقاذ الآخرين الذين يعانون من نفس المصير ، يحاول الدكتور مايكل موربيوس القيام بمقامرة يائسة. ما يبدو للوهلة الأولى أنه نجاح جذري سرعان ما يكشف عن نفسه على أنه علاج يحتمل أن يكون أسوأ من المرض.</string>
+    <string name="action">اكشن</string>
+    <string name="science_fiction">خيال علمي</string>
+    <string name="fantastic_beasts_the_secrets_of_dumbledore">الوحوش المذهلة: أسرار دمبلدور</string>
+    <string name="fantastic_beasts_description">يعرف البروفيسور ألبوس دمبلدور أن الساحر القوي والظلام جيليرت جريندلفالد يتحرك للسيطرة على عالم السحرة. غير قادر على منعه بمفرده ، فقد عهد إلى عالم الطبيعة السحري نيوت سكاماندر بقيادة فريق مقدام من السحرة والسحرة. سرعان ما واجهوا مجموعة من الوحوش القديمة والجديدة أثناء اشتباكهم مع عدد متزايد من أتباع الكرينوالد.</string>
+    <string name="doctor_strange_in_the_multiverse_of_madness">دكتور غريب في الكون المتعدد من الجنون</string>
+    <string name="doctor_strange_in_the_multiverse_of_madness_description">يخترق دكتور سترينج ، بمساعدة حلفائه الصوفيين القدامى والجدد ، الحقائق البديلة الخطيرة والخطيرة للكون المتعدد لمواجهة خصم جديد غامض.</string>
 </resources>

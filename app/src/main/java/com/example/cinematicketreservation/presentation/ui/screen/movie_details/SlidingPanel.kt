@@ -1,6 +1,7 @@
 package com.example.cinematicketreservation.presentation.ui.screen.movie_details
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,7 @@ import com.example.cinematicketreservation.presentation.ui.component.MovieTitle
 import com.example.cinematicketreservation.presentation.ui.screen.home.Genre
 
 @Composable
-fun SlidingPanel(modifier: Modifier = Modifier) {
+fun SlidingPanel(modifier: Modifier = Modifier,onClickButton:()->Unit) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
@@ -63,6 +64,7 @@ fun SlidingPanel(modifier: Modifier = Modifier) {
             )
             MovieDescription("Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers.")
             ItemButton(
+                onClick = onClickButton,
                 text = "Booking",
                 textColor = Color.White,
                 iconResource = R.drawable.ic_card, iconColor = Color.White.copy(alpha = .87f),
@@ -76,5 +78,5 @@ fun SlidingPanel(modifier: Modifier = Modifier) {
 @Preview(showSystemUi = true)
 @Composable
 fun SlidingPanelPreview() {
-    SlidingPanel()
+    SlidingPanel(){}
 }

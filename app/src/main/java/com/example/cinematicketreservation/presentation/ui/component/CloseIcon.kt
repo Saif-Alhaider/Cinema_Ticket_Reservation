@@ -24,7 +24,6 @@ import com.example.cinematicketreservation.R
 
 @Composable
 fun CloseIcon(modifier: Modifier =Modifier ) {
-
     Box(modifier = Modifier.wrapContentWidth().clip(CircleShape).then(modifier)) {
         Image(
             painter = painterResource(id = R.drawable.ic_close),

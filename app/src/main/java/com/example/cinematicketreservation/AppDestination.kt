@@ -1,7 +1,6 @@
-package com.example.cinematicketreservation.presentation
+package com.example.cinematicketreservation
 
 import androidx.annotation.DrawableRes
-import com.example.cinematicketreservation.R
 
 sealed class AppDestination(
     val route: String,

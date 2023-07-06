@@ -4,4 +4,12 @@
     <string name="coming_soon">Coming Soon</string>
     <string name="fantasy">Fantasy</string>
     <string name="adventure">Adventure</string>
+    <string name="morbius">Morbius</string>
+    <string name="morbius_description">Dangerously ill with a rare blood disorder, and determined to save others suffering his same fate, Dr. Michael Morbius attempts a desperate gamble. What at first appears to be a radical success soon reveals itself to be a remedy potentially worse than the disease.</string>
+    <string name="action">Action</string>
+    <string name="science_fiction">Science Fiction</string>
+    <string name="fantastic_beasts_the_secrets_of_dumbledore">Fantastic Beasts: The Secrets of Dumbledore</string>
+    <string name="fantastic_beasts_description">Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald\'s growing legion of followers.</string>
+    <string name="doctor_strange_in_the_multiverse_of_madness">Doctor Strange In The Multiverse Of Madness</string>
+    <string name="doctor_strange_in_the_multiverse_of_madness_description">Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.</string>
 </resources>

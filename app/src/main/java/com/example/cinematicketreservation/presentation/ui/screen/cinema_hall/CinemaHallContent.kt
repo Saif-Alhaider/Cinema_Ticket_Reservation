@@ -1,6 +1,7 @@
 package com.example.cinematicketreservation.presentation.ui.screen.cinema_hall
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,12 +14,20 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.cinematicketreservation.presentation.ui.component.CloseIcon
+import com.example.cinematicketreservation.presentation.ui.component.SpacerVertical16Dp
 import com.example.cinematicketreservation.presentation.ui.component.SpacerVertical24Dp
 import com.example.cinematicketreservation.presentation.ui.screen.movie_details.DaySelectBottomSheet
 
 @Composable
-fun CinemaHall() {
+fun CinemaHallScreen(navController: NavController) {
+    CinemaHallContent(onClickClose = {navController.popBackStack()})
+}
+
+
+@Composable
+fun CinemaHallContent(onClickClose:()->Unit) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -27,7 +36,8 @@ fun CinemaHall() {
 
     ) {
             Column(verticalArrangement = Arrangement.SpaceBetween, modifier = Modifier.padding(horizontal = 16.dp)) {
-                CloseIcon(Modifier.padding(16.dp))
+                SpacerVertical16Dp()
+                CloseIcon(Modifier.clickable { onClickClose() })
                 CinemaProjector()
                 SeatsSection()
                 SpacerVertical24Dp()
@@ -43,5 +53,5 @@ fun CinemaHall() {
 @Preview(showSystemUi = true)
 @Composable
 fun CinemaHallPreview() {
-    CinemaHall()
+    CinemaHallContent({})
 }

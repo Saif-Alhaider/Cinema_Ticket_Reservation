@@ -16,8 +16,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.cinematicketreservation.presentation.AppDestination
-import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.CinemaHall
+import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.CinemaHallContent
+import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.CinemaHallScreen
 import com.example.cinematicketreservation.presentation.ui.screen.home.BottomNavigation
 import com.example.cinematicketreservation.presentation.ui.screen.home.HomeScreen
 import com.example.cinematicketreservation.presentation.ui.screen.movie_details.MovieDetailsScreen
@@ -52,13 +52,14 @@ class MainActivity : ComponentActivity() {
                         startDestination = AppDestination.Home.route
                     ) {
                         composable(AppDestination.Home.route)
-                        { Box(Modifier.padding(innerPadding)) { HomeScreen(navController = navController) } }
-                        composable(AppDestination.MovieDetails.route) {
-                            MovieDetailsScreen(
-                                navController
-                            )
+                        {
+                            Box(Modifier.padding(innerPadding))
+                            { HomeScreen(navController = navController) }
                         }
-                        composable(AppDestination.CinemaHall.route) { CinemaHall() }
+                        composable(AppDestination.MovieDetails.route) {
+                            MovieDetailsScreen(navController)
+                        }
+                        composable(AppDestination.CinemaHall.route) { CinemaHallScreen(navController) }
                     }
                 }
             }

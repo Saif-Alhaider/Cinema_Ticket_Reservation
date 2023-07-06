@@ -8,5 +8,6 @@ data class MovieUiState(
     val description: String = "",
     @DrawableRes val imageRes: Int = R.drawable.image_1,
     val duration: String = "",
-    val genres: List<String> = emptyList()
+    val genres: List<String> = emptyList(),
+    val youtubeKey: String = ""
 )

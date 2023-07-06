@@ -27,16 +27,17 @@ import com.example.cinematicketreservation.R
 @Composable
 fun ItemButton(
     modifier: Modifier = Modifier,
+    onClick: () -> Unit = {},
     text: String,
     fontSize: TextUnit = 16.sp,
     backgroundColor: Color = Color(0xFFFF5524),
     textColor: Color = Color.Black,
     border: BorderStroke? = null,
     @DrawableRes iconResource: Int? = null,
-    iconColor:Color = Color.Black.copy(alpha = .87f)
+    iconColor: Color = Color.Black.copy(alpha = .87f)
 ) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor),
         border = border,
         modifier = Modifier

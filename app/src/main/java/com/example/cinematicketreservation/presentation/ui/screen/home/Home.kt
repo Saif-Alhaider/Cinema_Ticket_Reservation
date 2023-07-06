@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.cinematicketreservation.presentation.AppDestination
+import com.example.cinematicketreservation.AppDestination
 import com.example.cinematicketreservation.presentation.ui.component.MovieTime
 import com.example.cinematicketreservation.presentation.ui.component.MovieTitle
 import com.example.cinematicketreservation.presentation.ui.component.SpacerVertical16Dp
@@ -31,7 +31,7 @@ import com.example.cinematicketreservation.presentation.viewModel.MovieUiState
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), navController: NavController) {
     HomeContent(
-        viewModel.moviesList,
+        viewModel.moviesData.data,
         viewModel.state.collectAsState(),
         viewModel::updateState
     ) { navController.navigate(AppDestination.MovieDetails.route) }
