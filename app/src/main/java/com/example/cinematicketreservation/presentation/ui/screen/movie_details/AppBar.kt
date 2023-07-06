@@ -14,9 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.cinematicketreservation.presentation.ui.component.CloseIcon
 import com.example.cinematicketreservation.presentation.ui.component.MovieTimeChip
+import java.time.Duration
 
 @Composable
-fun AppBar(onClickClose:()->Unit) {
+fun AppBar(onClickClose:()->Unit,duration: String) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -27,6 +28,6 @@ fun AppBar(onClickClose:()->Unit) {
             .padding(PaddingValues(horizontal = 16.dp))
     ) {
         CloseIcon(Modifier.clickable { onClickClose() })
-        MovieTimeChip()
+        MovieTimeChip(duration)
     }
 }

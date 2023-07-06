@@ -25,7 +25,13 @@ import com.example.cinematicketreservation.presentation.ui.component.MovieTitle
 import com.example.cinematicketreservation.presentation.ui.screen.home.Genre
 
 @Composable
-fun SlidingPanel(movieTitle: String,movieDescription:String, modifier: Modifier = Modifier, onClickButton: () -> Unit) {
+fun SlidingPanel(
+    movieTitle: String,
+    movieDescription: String,
+    modifier: Modifier = Modifier,
+    onClickButton: () -> Unit,
+    genres: List<String>
+) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
@@ -44,7 +50,7 @@ fun SlidingPanel(movieTitle: String,movieDescription:String, modifier: Modifier 
         ) {
             RatingSection(modifier = Modifier.padding(PaddingValues(horizontal = 50.dp)))
             MovieTitle(movieText = movieTitle)
-            Genre(listOf("Fantasy", "Adventure"))
+            Genre(genres)
             CastSection(
                 actorsimages = listOf(
                     R.drawable.image_1,
@@ -74,6 +80,11 @@ fun SlidingPanel(movieTitle: String,movieDescription:String, modifier: Modifier 
 @Preview(showSystemUi = true)
 @Composable
 fun SlidingPanelPreview() {
-    SlidingPanel("Morbius","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
-            "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam") {}
+    SlidingPanel(
+        "Morbius",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
+                "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+        onClickButton = {},
+        genres = listOf()
+    )
 }

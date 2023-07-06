@@ -16,7 +16,7 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.cinematicketreservation.R
 
 @Composable
-fun UpperSection(onClickClose: () -> Unit,@DrawableRes moviePoster:Int,youtubeKey:String) {
+fun UpperSection(onClickClose: () -> Unit,@DrawableRes moviePoster:Int,youtubeKey:String,duration:String) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
@@ -34,12 +34,12 @@ fun UpperSection(onClickClose: () -> Unit,@DrawableRes moviePoster:Int,youtubeKe
                     )
                 startActivity(context,intent,null)
             })
-        AppBar(onClickClose)
+        AppBar(onClickClose,duration = duration)
     }
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun UpperSectionPreview() {
-    UpperSection(moviePoster = R.drawable.image_7, onClickClose = {}, youtubeKey = "")
+    UpperSection(moviePoster = R.drawable.image_7, onClickClose = {}, youtubeKey = "", duration = "2h 23m")
 }

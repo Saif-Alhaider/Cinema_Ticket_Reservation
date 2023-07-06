@@ -36,8 +36,9 @@ fun MovieDetailsContent(onClickClose: () -> Unit, onClickButton: () -> Unit, mov
         modifier = Modifier
             .fillMaxSize()
     ) {
-        UpperSection(onClickClose, movie.secondPosterRes, movie.youtubeKey)
+        UpperSection(onClickClose, movie.secondPosterRes, movie.youtubeKey,duration = movie.duration)
         SlidingPanel(
+            genres = movie.genres,
             movieTitle = movie.title,
             movieDescription = movie.description,
             onClickButton = onClickButton,

@@ -16,14 +16,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MovieTimeChip() {
+fun MovieTimeChip(duration:String) {
     Box(
         modifier = Modifier
             .wrapContentWidth()
             .clip(CircleShape)
     ) {
         MovieTime(
-            movieDuration = "2h 23m",
+            movieDuration = duration,
             modifier = Modifier
                 .padding(PaddingValues(vertical = 5.dp, horizontal = 8.dp)),
             textColor = Color.White.copy(alpha = .87f)
@@ -41,5 +41,5 @@ fun MovieTimeChip() {
 @Preview
 @Composable
 fun MovieTimeChipPreview() {
-    MovieTimeChip()
+    MovieTimeChip("2h 23m")
 }
