@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">حجز تذاكر سينما</string>
     <string name="now_showing">يعرض الان</string>
     <string name="coming_soon">قريباً</string>
@@ -16,4 +16,7 @@
     <string name="booking">حجز</string>
     <string name="buy_tickets">اشتري التذاكر</string>
     <string name="tickets">تذاكر</string>
+    <string name="available">متوفر</string>
+    <string name="taken">محجوز</string>
+    <string name="selected" tools:ignore="PrivateResource">مختار</string>
 </resources>
