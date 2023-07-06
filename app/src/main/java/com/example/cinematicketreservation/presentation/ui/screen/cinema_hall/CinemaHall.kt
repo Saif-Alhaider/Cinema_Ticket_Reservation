@@ -33,13 +33,19 @@ fun CinemaHallScreen(
     CinemaHallContent(
         onClickClose = { navController.popBackStack() },
         backDropImageRes = movie.movieBackDropImageRes,
-        onSeatClick = viewModel::addSeats
+        onSeatClick = viewModel::addSeats,
+        numberOfTickets = movie.seats.size
     )
 }
 
 
 @Composable
-fun CinemaHallContent(onClickClose: () -> Unit,onSeatClick:(String)->Unit, @DrawableRes backDropImageRes: Int) {
+fun CinemaHallContent(
+    onClickClose: () -> Unit,
+    onSeatClick: (String) -> Unit,
+    @DrawableRes backDropImageRes: Int,
+    numberOfTickets:Int
+) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -60,7 +66,7 @@ fun CinemaHallContent(onClickClose: () -> Unit,onSeatClick:(String)->Unit, @Draw
             SpacerVertical24Dp()
         }
         Box(Modifier.clip(RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))) {
-            DaySelectBottomSheet()
+            DaySelectBottomSheet(numberOfTickets)
         }
     }
 }
@@ -68,5 +74,5 @@ fun CinemaHallContent(onClickClose: () -> Unit,onSeatClick:(String)->Unit, @Draw
 @Preview(showSystemUi = true)
 @Composable
 fun CinemaHallPreview() {
-    CinemaHallContent({}, onSeatClick = {},0)
+    CinemaHallContent({}, onSeatClick = {}, 0,4)
 }

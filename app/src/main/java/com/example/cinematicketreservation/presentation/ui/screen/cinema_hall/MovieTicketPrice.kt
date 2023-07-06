@@ -11,21 +11,21 @@ import androidx.compose.ui.unit.sp
 import com.example.cinematicketreservation.R
 
 @Composable
-fun MovieTicketPrice() {
+fun MovieTicketPrice(numnberOfTickets: Int) {
     Column() {
         Text(
-            text = "$100.00",
+            text = "$" + "%.2f".format(numnberOfTickets * 25.0),
             fontSize = 24.sp,
             fontFamily = FontFamily(Font(R.font.kumbh_sans_medium)),
             letterSpacing = 1.3.sp,
             color = Color.Black.copy(alpha = .87f)
         )
-        Text(text = "4 tickets", color = Color(0xFFB5B5B5))
+        Text(text = "$numnberOfTickets tickets", color = Color(0xFFB5B5B5))
     }
 }
 
 @Preview
 @Composable
 fun MovieTicketPricePreview() {
-    MovieTicketPrice()
+    MovieTicketPrice(4)
 }

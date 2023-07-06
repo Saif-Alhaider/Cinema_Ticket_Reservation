@@ -21,7 +21,7 @@ import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.Ch
 import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.MovieTicketPrice
 
 @Composable
-fun DaySelectBottomSheet() {
+fun DaySelectBottomSheet(numberOfTickets:Int) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -37,7 +37,7 @@ fun DaySelectBottomSheet() {
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            MovieTicketPrice()
+            MovieTicketPrice(numberOfTickets)
             ItemButton(
                 text = "Buy Tickets",
                 textColor = Color.White,
@@ -52,6 +52,6 @@ fun DaySelectBottomSheet() {
 @Preview(showBackground = true)
 @Composable
 fun DaySelectBottomSheetPreview() {
-    DaySelectBottomSheet()
+    DaySelectBottomSheet(4)
 }
 
