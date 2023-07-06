@@ -5,14 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
-import com.example.cinematicketreservation.presentation.ui.screen.movie_details.MovieDetails
+import com.example.cinematicketreservation.presentation.AppDestination
+import com.example.cinematicketreservation.presentation.ui.screen.home.BottomNavigation
+import com.example.cinematicketreservation.presentation.ui.screen.home.HomeScreen
 import com.example.cinematicketreservation.ui.theme.CinemaTicketReservationTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,18 +23,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, true)
         super.onCreate(savedInstanceState)
+        val selectedRoute = mutableStateOf(AppDestination.Home.route)
         setContent {
             CinemaTicketReservationTheme {
                 // A surface container using the 'background' color from the theme
-                Scaffold { innerPadding ->
-                    // Apply the padding globally to the whole BottomNavScreensController
-                    Box(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .statusBarsPadding()
-                            .navigationBarsPadding()
-                    ) {
-                        MovieDetails()
+                Scaffold(
+                    bottomBar = {
+                        BottomNavigation(
+                            selectedRoute = selectedRoute.value,
+                            onItemClick = { selectedRoute.value = it })
+                    }
+                ) { innerPadding ->
+//                    val navController = rememberNavController()
+//                    NavHost(
+//                        navController = navController,
+//                        startDestination = AppDestination.HomeScreen.route
+//                    ) {
+//                        composable(AppDestination.HomeScreen.route) { HomeScreen() }
+//                        composable(AppDestination.MovieDetailsScreen.route) { MovieDetails() }
+//                        composable(AppDestination.CinemaHallScreen.route) { CinemaHall() }
+//                    }
+                    Box(Modifier.padding(innerPadding)) {
+                        HomeScreen()
                     }
                 }
             }

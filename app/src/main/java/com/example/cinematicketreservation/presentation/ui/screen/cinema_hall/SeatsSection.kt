@@ -1,15 +1,13 @@
 package com.example.cinematicketreservation.presentation.ui.screen.cinema_hall
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
@@ -17,21 +15,25 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import java.util.Random
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun SeatsSection() {
     Column(
         Modifier
             .background(Color.Black)
     ) {
-
-
-        LazyVerticalGrid(columns = GridCells.Fixed(3)) {
-            itemsIndexed(generateSeatList()) { index, seatId ->
-                val rotateAngle = if (index % 3 == 0 ) 15f else if( index % 3 == 2) -15f else 0f
-                SeatSet(Modifier.rotate(rotateAngle).padding(15.dp))
-            }
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(100.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            userScrollEnabled = false
+        ) {
+        itemsIndexed(generateSeatList()) { index, seatId ->
+            val rotateAngle = if (index % 3 == 0) 15f else if (index % 3 == 2) -15f else 0f
+            SeatSet(
+                Modifier
+                    .rotate(rotateAngle)
+                    .padding(vertical = 8.dp))
         }
+    }
     }
 }
 

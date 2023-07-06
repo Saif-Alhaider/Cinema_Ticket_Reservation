@@ -7,13 +7,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SeatIndicatorSection() {
+fun SeatIndicatorSection(modifier: Modifier=Modifier) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier.padding(horizontal = 16.dp, vertical = 32.dp).fillMaxWidth()
+        modifier = modifier
+            .fillMaxWidth()
     ) {
         SeatIndicator(
             circleColor = Color.White,
@@ -31,4 +33,10 @@ fun SeatIndicatorSection() {
             textColor = Color.White.copy(alpha = .87f)
         )
     }
+}
+
+@Preview
+@Composable
+fun SeatIndicatorSectionPreview() {
+    SeatIndicatorSection()
 }
