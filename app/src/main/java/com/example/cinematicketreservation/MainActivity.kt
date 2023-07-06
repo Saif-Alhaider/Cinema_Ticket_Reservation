@@ -6,17 +6,23 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.cinematicketreservation.presentation.AppDestination
+import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.CinemaHall
 import com.example.cinematicketreservation.presentation.ui.screen.home.BottomNavigation
 import com.example.cinematicketreservation.presentation.ui.screen.home.HomeScreen
+import com.example.cinematicketreservation.presentation.ui.screen.movie_details.MovieDetails
 import com.example.cinematicketreservation.ui.theme.CinemaTicketReservationTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
@@ -34,18 +40,19 @@ class MainActivity : ComponentActivity() {
                             onItemClick = { selectedRoute.value = it })
                     }
                 ) { innerPadding ->
-//                    val navController = rememberNavController()
-//                    NavHost(
-//                        navController = navController,
-//                        startDestination = AppDestination.HomeScreen.route
-//                    ) {
-//                        composable(AppDestination.HomeScreen.route) { HomeScreen() }
-//                        composable(AppDestination.MovieDetailsScreen.route) { MovieDetails() }
-//                        composable(AppDestination.CinemaHallScreen.route) { CinemaHall() }
-//                    }
-                    Box(Modifier.padding(innerPadding)) {
-                        HomeScreen()
+                    val navController = rememberNavController()
+                    NavHost(
+                        navController = navController,
+                        startDestination = AppDestination.Home.route
+                    ) {
+                        composable(AppDestination.Home.route)
+                        { Box(Modifier.padding(innerPadding)) { HomeScreen() } }
+                        composable(AppDestination.MovieDetails.route) { MovieDetails() }
+                        composable(AppDestination.CinemaHall.route) { CinemaHall() }
                     }
+//                    Box(Modifier.padding(innerPadding)) {
+//                        HomeScreen()
+//                    }
                 }
             }
         }
