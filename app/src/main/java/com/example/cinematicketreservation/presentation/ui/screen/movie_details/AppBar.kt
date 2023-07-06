@@ -1,5 +1,6 @@
 package com.example.cinematicketreservation.presentation.ui.screen.movie_details
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,7 +16,7 @@ import com.example.cinematicketreservation.presentation.ui.component.CloseIcon
 import com.example.cinematicketreservation.presentation.ui.component.MovieTimeChip
 
 @Composable
-fun AppBar() {
+fun AppBar(onClickClose:()->Unit) {
     Row(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
@@ -25,7 +26,7 @@ fun AppBar() {
             .offset(y = 24.dp)
             .padding(PaddingValues(horizontal = 16.dp))
     ) {
-        CloseIcon()
+        CloseIcon(Modifier.clickable { onClickClose() })
         MovieTimeChip()
     }
 }

@@ -8,17 +8,19 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.cinematicketreservation.presentation.AppDestination
 import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.CinemaHall
 import com.example.cinematicketreservation.presentation.ui.screen.home.BottomNavigation
 import com.example.cinematicketreservation.presentation.ui.screen.home.HomeScreen
-import com.example.cinematicketreservation.presentation.ui.screen.movie_details.MovieDetails
+import com.example.cinematicketreservation.presentation.ui.screen.movie_details.MovieDetailsScreen
 import com.example.cinematicketreservation.ui.theme.CinemaTicketReservationTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -31,23 +33,31 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val selectedRoute = mutableStateOf(AppDestination.Home.route)
         setContent {
+            val navController = rememberNavController()
+            val navBackStackEntry by navController.currentBackStackEntryAsState()
             CinemaTicketReservationTheme {
                 // A surface container using the 'background' color from the theme
                 Scaffold(
                     bottomBar = {
-                        BottomNavigation(
-                            selectedRoute = selectedRoute.value,
-                            onItemClick = { selectedRoute.value = it })
+                        if (navBackStackEntry?.destination?.route == AppDestination.Home.route) {
+                            BottomNavigation(
+                                selectedRoute = selectedRoute.value,
+                                onItemClick = { selectedRoute.value = it })
+                        }
+
                     }
                 ) { innerPadding ->
-                    val navController = rememberNavController()
                     NavHost(
                         navController = navController,
                         startDestination = AppDestination.Home.route
                     ) {
                         composable(AppDestination.Home.route)
-                        { Box(Modifier.padding(innerPadding)) { HomeScreen() } }
-                        composable(AppDestination.MovieDetails.route) { MovieDetails() }
+                        { Box(Modifier.padding(innerPadding)) { HomeScreen(navController = navController) } }
+                        composable(AppDestination.MovieDetails.route) {
+                            MovieDetailsScreen(
+                                navController
+                            )
+                        }
                         composable(AppDestination.CinemaHall.route) { CinemaHall() }
                     }
                 }

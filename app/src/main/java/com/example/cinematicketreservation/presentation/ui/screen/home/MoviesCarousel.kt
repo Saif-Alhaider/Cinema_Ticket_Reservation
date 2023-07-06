@@ -30,7 +30,7 @@ fun MoviesCarousel(
     imageWidth: Dp,
     imageHeight:Dp,
     movies: List<MovieUiState>,
-
+    navigateMovie:()->Unit,
     updateUiState: (Int) -> Unit,
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -77,7 +77,8 @@ fun MoviesCarousel(
                 MovieCard(
                     imageRes = movie.imageRes,
                     width = imageWidth,
-                    height = imageHeight
+                    height = imageHeight,
+                    onImageClick = navigateMovie
                 )
             }
 

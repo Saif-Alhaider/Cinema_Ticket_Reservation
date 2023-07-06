@@ -6,17 +6,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 
 @Composable
-fun MovieDetails() {
+fun MovieDetailsScreen(navController: NavController) {
+    MovieDetailsContent(){navController.popBackStack()}
+}
+@Composable
+fun MovieDetailsContent(onClickClose:()->Unit) {
     Box(modifier = Modifier
         .fillMaxSize()
         ) {
-        UpperSection()
+        UpperSection(onClickClose)
         SlidingPanel(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-
         )
     }
 }
@@ -24,5 +28,5 @@ fun MovieDetails() {
 @Preview(showSystemUi = true)
 @Composable
 fun MovieDetailsPreview() {
-    MovieDetails()
+    MovieDetailsContent(){}
 }

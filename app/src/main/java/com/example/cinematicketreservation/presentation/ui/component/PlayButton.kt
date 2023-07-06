@@ -21,13 +21,11 @@ fun PlayButton(modifier: Modifier = Modifier) {
     Image(
         painter = painterResource(id = R.drawable.ic_play),
         contentDescription = "play icon",
-        modifier = Modifier
+        modifier = modifier
             .clip(CircleShape)
-            .clickable { }
             .size(54.dp)
             .background(Color(0xFFFF5524))
             .padding(PaddingValues(16.dp))
-            .then(modifier)
     )
 }
 

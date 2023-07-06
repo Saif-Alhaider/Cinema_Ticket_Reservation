@@ -2,6 +2,7 @@ package com.example.cinematicketreservation.presentation.ui.component
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ fun MovieCard(
     width: Dp,
     height: Dp,
     @DrawableRes imageRes: Int = R.drawable.image_1,
+    onImageClick: () -> Unit
 ) {
     Image(
         painter = painterResource(id = imageRes), contentDescription = "Movie Image",
@@ -27,6 +29,7 @@ fun MovieCard(
         modifier = Modifier
             .clip(RoundedCornerShape(32.dp))
             .size(width = width, height = height)
+            .clickable { onImageClick() }
             .then(modifier)
     )
 }
@@ -34,5 +37,5 @@ fun MovieCard(
 @Preview
 @Composable
 fun MovieCardPreview() {
-    MovieCard(width = 264.dp, height = 400.dp)
+    MovieCard(width = 264.dp, height = 400.dp,){}
 }
