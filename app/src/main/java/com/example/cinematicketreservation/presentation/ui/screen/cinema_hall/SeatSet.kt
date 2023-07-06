@@ -5,25 +5,26 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cinematicketreservation.R
+import com.example.cinematicketreservation.presentation.viewModel.state.CinemaHallUiState
 
 @Composable
-fun SeatSet(modifier: Modifier=Modifier) {
+fun SeatSet(
+    onSeatClick: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    seatSet: Pair<CinemaHallUiState.Seat, CinemaHallUiState.Seat>
+) {
     val isFirstSeatActive = remember { mutableStateOf(false) }
     val isSecondSeatActive = remember { mutableStateOf(false) }
     val firstSeatColor = if (isFirstSeatActive.value) Color(0xFFFF5524) else Color.White
@@ -41,29 +42,44 @@ fun SeatSet(modifier: Modifier=Modifier) {
             Image(
                 painter = painterResource(id = R.drawable.ic_cinema_seat),
                 contentDescription = "cinema seat",
-                colorFilter = ColorFilter.tint(color = firstSeatColor),
-                modifier = Modifier.clickable { isFirstSeatActive.value = !isFirstSeatActive.value }
+                colorFilter = ColorFilter.tint(color = if (seatSet.first.isTaken) Color(0xFF404040) else firstSeatColor),
+                modifier = Modifier.clickable {
+                    if (!seatSet.first.isTaken) isFirstSeatActive.value = !isFirstSeatActive.value
+                    onSeatClick(seatSet.first.id)
+                }
             )
             Image(
                 painter = painterResource(id = R.drawable.ic_cinema_seat),
                 contentDescription = "cinema seat",
-                colorFilter = ColorFilter.tint(color = secondSeatColor),
+                colorFilter = ColorFilter.tint(color = if (seatSet.second.isTaken) Color(0XFF404040) else secondSeatColor),
                 modifier = Modifier.clickable {
-                    isSecondSeatActive.value = !isSecondSeatActive.value
+                    if (!seatSet.second.isTaken) isSecondSeatActive.value =
+                        !isSecondSeatActive.value
+                    onSeatClick(seatSet.second.id)
                 }
             )
         }
         Image(
             painter = painterResource(id = R.drawable.ic_seat_combination),
             contentDescription = "cinema seat",
-            colorFilter = ColorFilter.tint(color = combinationSeatColor),
+            colorFilter = ColorFilter.tint(
+                color = if (seatSet.first.isTaken && seatSet.second.isTaken) Color(
+                    0x613C3C3C
+                ) else combinationSeatColor
+            ),
 
-        )
+            )
     }
 }
 
 @Preview
 @Composable
 fun SeatSetPreview() {
-    SeatSet()
+    SeatSet(
+        seatSet = Pair(
+            CinemaHallUiState.Seat("1a/1", false),
+            CinemaHallUiState.Seat("1a/2", true)
+        ),
+        onSeatClick = {}
+    )
 }

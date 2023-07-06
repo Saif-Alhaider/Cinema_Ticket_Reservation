@@ -12,5 +12,4 @@ data class MovieUiState(
     val duration: String = "",
     val genres: List<String> = emptyList(),
     val youtubeKey: String = "",
-
     )

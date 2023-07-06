@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MoviesData @Inject constructor(private val context: Context) {
     val data
         get() =
-            mutableListOf<MovieUiState>(
+            mutableListOf(
                 MovieUiState(
                     title = context.getString(R.string.morbius),
                     description = context.getString(R.string.morbius_description),

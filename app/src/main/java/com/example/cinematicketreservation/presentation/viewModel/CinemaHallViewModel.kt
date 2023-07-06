@@ -1,5 +1,6 @@
 package com.example.cinematicketreservation.presentation.viewModel
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.cinematicketreservation.data.MoviesData
@@ -23,8 +24,20 @@ class CinemaHallViewModel @Inject constructor(
     init {
         getMovieTicketDetails()
     }
+
     private fun getMovieTicketDetails() {
         val movie = moviesData.data.find { it.title == args.movieName }
-        movie?.let { _state.update { it.copy(movieBackDropImageRes = movie.posterRes) } }
+        movie?.let { _state.update { it.copy(movieBackDropImageRes = movie.backdropRes) } }
+    }
+
+    fun addSeats(seatId: String) {
+        val updateList = mutableListOf<CinemaHallUiState.Seat>()
+        if (_state.value.seats.any { seatId == it.id }) {
+            updateList.addAll(_state.value.seats.filterNot { seatId == it.id })
+        } else {
+            updateList.add(CinemaHallUiState.Seat(id = seatId))
+        }
+        _state.update { it.copy(seats = updateList) }
+        Log.i("gg", "seats: ${_state.value.seats}")
     }
 }

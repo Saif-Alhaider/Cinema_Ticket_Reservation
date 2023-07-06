@@ -10,7 +10,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.cinematicketreservation.R
 import com.example.cinematicketreservation.presentation.ui.screen.cinema_hall.navigateToCinemaHall
 import com.example.cinematicketreservation.presentation.viewModel.MovieDetailsViewModel
 import com.example.cinematicketreservation.presentation.viewModel.state.MovieUiState
@@ -26,10 +25,7 @@ fun MovieDetailsScreen(
         onClickClose = { navController.popBackStack() },
         onClickButton = {
             navController
-                .navigateToCinemaHall(
-                    context
-                        .getString(R.string.doctor_strange_in_the_multiverse_of_madness)
-                )
+                .navigateToCinemaHall(movie.title)
         }, movie = movie
     )
 }
@@ -40,7 +36,7 @@ fun MovieDetailsContent(onClickClose: () -> Unit, onClickButton: () -> Unit, mov
         modifier = Modifier
             .fillMaxSize()
     ) {
-        UpperSection(onClickClose,movie.secondPosterRes,movie.youtubeKey)
+        UpperSection(onClickClose, movie.secondPosterRes, movie.youtubeKey)
         SlidingPanel(
             movieTitle = movie.title,
             movieDescription = movie.description,

@@ -32,13 +32,14 @@ fun CinemaHallScreen(
     val movie = viewModel.state.collectAsState().value
     CinemaHallContent(
         onClickClose = { navController.popBackStack() },
-        backDropImageRes = movie.movieBackDropImageRes
+        backDropImageRes = movie.movieBackDropImageRes,
+        onSeatClick = viewModel::addSeats
     )
 }
 
 
 @Composable
-fun CinemaHallContent(onClickClose: () -> Unit, @DrawableRes backDropImageRes: Int) {
+fun CinemaHallContent(onClickClose: () -> Unit,onSeatClick:(String)->Unit, @DrawableRes backDropImageRes: Int) {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
@@ -53,7 +54,7 @@ fun CinemaHallContent(onClickClose: () -> Unit, @DrawableRes backDropImageRes: I
             SpacerVertical16Dp()
             CloseIcon(Modifier.clickable { onClickClose() })
             CinemaProjector(backDropImageRes)
-            SeatsSection()
+            SeatsSection(onSeatClick = onSeatClick)
             SpacerVertical24Dp()
             SeatIndicatorSection()
             SpacerVertical24Dp()
@@ -67,5 +68,5 @@ fun CinemaHallContent(onClickClose: () -> Unit, @DrawableRes backDropImageRes: I
 @Preview(showSystemUi = true)
 @Composable
 fun CinemaHallPreview() {
-    CinemaHallContent({},0)
+    CinemaHallContent({}, onSeatClick = {},0)
 }

@@ -13,10 +13,11 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import java.util.Random
+import com.example.cinematicketreservation.presentation.viewModel.state.CinemaHallUiState
+import kotlin.random.Random
 
 @Composable
-fun SeatsSection() {
+fun SeatsSection(onSeatClick:(String)->Unit) {
     Column(
         Modifier
             .background(Color.Black)
@@ -26,42 +27,36 @@ fun SeatsSection() {
             horizontalArrangement = Arrangement.SpaceBetween,
             userScrollEnabled = false
         ) {
-        itemsIndexed(generateSeatList()) { index, seatId ->
-            val rotateAngle = if (index % 3 == 0) 15f else if (index % 3 == 2) -15f else 0f
-            SeatSet(
-                Modifier
-                    .rotate(rotateAngle)
-                    .padding(vertical = 8.dp))
+            itemsIndexed(generateSeatList()) { index, seat ->
+                val rotateAngle = if (index % 3 == 0) 15f else if (index % 3 == 2) -15f else 0f
+                SeatSet(
+                    onSeatClick = onSeatClick,
+                    seatSet = seat,
+                    modifier = Modifier
+                        .rotate(rotateAngle)
+                        .padding(vertical = 8.dp)
+                )
+            }
         }
-    }
     }
 }
 
 @Preview(showSystemUi = true)
 @Composable
 fun SeatSectionPreview() {
-    SeatsSection()
+    SeatsSection({})
 }
 
-fun generateSeatList(): List<String> {
-    val rows = listOf('A', 'B', 'C')
-    val columns = listOf('1', '2', '3')
-    val seats = listOf('1', '2')
+fun generateSeatList(): List<Pair<CinemaHallUiState.Seat, CinemaHallUiState.Seat>> {
+    val seats = mutableListOf<CinemaHallUiState.Seat>()
+    val random = Random.Default
 
-    val random = Random()
-    val seatList = mutableListOf<String>()
+    for (j in 'a'..'o') {
+        seats.add(CinemaHallUiState.Seat("$j/1", random.nextBoolean()))
 
-    while (seatList.size < 15) {
-        val row = rows[random.nextInt(rows.size)]
-        val column = columns[random.nextInt(columns.size)]
-        val seat = seats[random.nextInt(seats.size)]
-
-        val seatElement = "$row$column$seat"
-
-        if (!seatList.contains(seatElement)) {
-            seatList.add(seatElement)
-        }
+        seats.add(CinemaHallUiState.Seat("$j/2", random.nextBoolean()))
     }
 
-    return seatList
+
+    return seats.chunked(2) { (first, second) -> Pair(first, second) }
 }
