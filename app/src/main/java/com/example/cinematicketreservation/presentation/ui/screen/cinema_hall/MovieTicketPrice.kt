@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
@@ -20,7 +21,10 @@ fun MovieTicketPrice(numnberOfTickets: Int) {
             letterSpacing = 1.3.sp,
             color = Color.Black.copy(alpha = .87f)
         )
-        Text(text = "$numnberOfTickets tickets", color = Color(0xFFB5B5B5))
+        Text(
+            text = "$numnberOfTickets " + stringResource(id = R.string.tickets),
+            color = Color(0xFFB5B5B5)
+        )
     }
 }
 

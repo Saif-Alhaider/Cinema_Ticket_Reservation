@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cinematicketreservation.R
@@ -39,7 +40,7 @@ fun DaySelectBottomSheet(numberOfTickets:Int) {
         ) {
             MovieTicketPrice(numberOfTickets)
             ItemButton(
-                text = "Buy Tickets",
+                text = stringResource(R.string.buy_tickets),
                 textColor = Color.White,
                 iconResource = R.drawable.ic_card, iconColor = Color.White.copy(alpha = .87f),
             )

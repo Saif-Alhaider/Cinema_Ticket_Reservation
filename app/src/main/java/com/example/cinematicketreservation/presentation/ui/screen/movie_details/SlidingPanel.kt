@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.cinematicketreservation.R
@@ -67,7 +68,7 @@ fun SlidingPanel(
             MovieDescription(movieDescription)
             ItemButton(
                 onClick = onClickButton,
-                text = "Booking",
+                text = stringResource(R.string.booking),
                 textColor = Color.White,
                 iconResource = R.drawable.ic_card, iconColor = Color.White.copy(alpha = .87f),
                 modifier = Modifier.padding(bottom = 32.dp + 16.dp)

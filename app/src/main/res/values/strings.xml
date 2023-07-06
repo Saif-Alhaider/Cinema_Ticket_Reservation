@@ -12,4 +12,7 @@
     <string name="fantastic_beasts_description">Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald\'s growing legion of followers.</string>
     <string name="doctor_strange_in_the_multiverse_of_madness">Doctor Strange In The Multiverse Of Madness</string>
     <string name="doctor_strange_in_the_multiverse_of_madness_description">Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.</string>
+    <string name="booking">Booking</string>
+    <string name="buy_tickets">Buy Tickets</string>
+    <string name="tickets">tickets</string>
 </resources>

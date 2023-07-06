@@ -13,4 +13,7 @@
     <string name="fantastic_beasts_description">يعرف البروفيسور ألبوس دمبلدور أن الساحر القوي والظلام جيليرت جريندلفالد يتحرك للسيطرة على عالم السحرة. غير قادر على منعه بمفرده ، فقد عهد إلى عالم الطبيعة السحري نيوت سكاماندر بقيادة فريق مقدام من السحرة والسحرة. سرعان ما واجهوا مجموعة من الوحوش القديمة والجديدة أثناء اشتباكهم مع عدد متزايد من أتباع الكرينوالد.</string>
     <string name="doctor_strange_in_the_multiverse_of_madness">دكتور غريب في الكون المتعدد من الجنون</string>
     <string name="doctor_strange_in_the_multiverse_of_madness_description">يخترق دكتور سترينج ، بمساعدة حلفائه الصوفيين القدامى والجدد ، الحقائق البديلة الخطيرة والخطيرة للكون المتعدد لمواجهة خصم جديد غامض.</string>
+    <string name="booking">حجز</string>
+    <string name="buy_tickets">اشتري التذاكر</string>
+    <string name="tickets">تذاكر</string>
 </resources>
