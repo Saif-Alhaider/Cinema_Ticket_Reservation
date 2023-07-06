@@ -1,17 +1,13 @@
 package com.example.cinematicketreservation.presentation.ui.screen.movie_details
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -29,7 +25,7 @@ import com.example.cinematicketreservation.presentation.ui.component.MovieTitle
 import com.example.cinematicketreservation.presentation.ui.screen.home.Genre
 
 @Composable
-fun SlidingPanel(modifier: Modifier = Modifier,onClickButton:()->Unit) {
+fun SlidingPanel(movieTitle: String,movieDescription:String, modifier: Modifier = Modifier, onClickButton: () -> Unit) {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
@@ -47,7 +43,7 @@ fun SlidingPanel(modifier: Modifier = Modifier,onClickButton:()->Unit) {
 
         ) {
             RatingSection(modifier = Modifier.padding(PaddingValues(horizontal = 50.dp)))
-            MovieTitle(movieText = "Fantastic Beasts: The Secrets of Dumbledore")
+            MovieTitle(movieText = movieTitle)
             Genre(listOf("Fantasy", "Adventure"))
             CastSection(
                 actorsimages = listOf(
@@ -62,13 +58,13 @@ fun SlidingPanel(modifier: Modifier = Modifier,onClickButton:()->Unit) {
                 ),
                 contentPadding = PaddingValues(horizontal = 16.dp)
             )
-            MovieDescription("Professor Albus Dumbledore knows the powerful, dark wizard Gellert Grindelwald is moving to seize control of the wizarding world. Unable to stop him alone, he entrusts magizoologist Newt Scamander to lead an intrepid team of wizards and witches. They soon encounter an array of old and new beasts as they clash with Grindelwald's growing legion of followers.")
+            MovieDescription(movieDescription)
             ItemButton(
                 onClick = onClickButton,
                 text = "Booking",
                 textColor = Color.White,
                 iconResource = R.drawable.ic_card, iconColor = Color.White.copy(alpha = .87f),
-                modifier = Modifier.padding(bottom = 32.dp+16.dp)
+                modifier = Modifier.padding(bottom = 32.dp + 16.dp)
             )
         }
 
@@ -78,5 +74,6 @@ fun SlidingPanel(modifier: Modifier = Modifier,onClickButton:()->Unit) {
 @Preview(showSystemUi = true)
 @Composable
 fun SlidingPanelPreview() {
-    SlidingPanel(){}
+    SlidingPanel("Morbius","Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do " +
+            "eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam") {}
 }

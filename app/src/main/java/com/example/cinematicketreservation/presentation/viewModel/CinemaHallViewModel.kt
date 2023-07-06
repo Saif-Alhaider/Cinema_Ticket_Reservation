@@ -1,6 +1,5 @@
 package com.example.cinematicketreservation.presentation.viewModel
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.cinematicketreservation.data.MoviesData
@@ -26,6 +25,6 @@ class CinemaHallViewModel @Inject constructor(
     }
     private fun getMovieTicketDetails() {
         val movie = moviesData.data.find { it.title == args.movieName }
-        movie?.let { _state.update { it.copy(movieBackDropImageRes = movie.imageRes) } }
+        movie?.let { _state.update { it.copy(movieBackDropImageRes = movie.posterRes) } }
     }
 }

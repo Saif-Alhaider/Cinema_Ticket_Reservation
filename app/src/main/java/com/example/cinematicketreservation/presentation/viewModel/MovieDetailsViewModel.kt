@@ -1,7 +1,10 @@
 package com.example.cinematicketreservation.presentation.viewModel
 
+import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.cinematicketreservation.data.MoviesData
+import com.example.cinematicketreservation.presentation.ui.screen.movie_details.MovieDetailsArgs
 import com.example.cinematicketreservation.presentation.viewModel.state.MovieUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,19 +13,21 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(val moviesData: MoviesData) : ViewModel() {
+class MovieDetailsViewModel @Inject constructor(
+    private val moviesData: MoviesData,
+    savedStateHandle: SavedStateHandle
+) : ViewModel() {
     private val _state = MutableStateFlow(MovieUiState())
     val state = _state.asStateFlow()
+    private val args = MovieDetailsArgs(savedStateHandle)
 
-    fun updateState(index: Int) {
-        _state.update {
-            it.copy(
-                title = moviesData.data[index].title,
-                description = moviesData.data[index].description,
-                duration = moviesData.data[index].duration,
-                posterRes = moviesData.data[index].posterRes,
-                genres = moviesData.data[index].genres
-            )
-        }
+    init {
+        getMovieDetails()
     }
+
+    private fun getMovieDetails() {
+        val movie = moviesData.data.find { it.title == args.movieName }
+        movie?.let { _state.update { movie } }
+    }
+
 }

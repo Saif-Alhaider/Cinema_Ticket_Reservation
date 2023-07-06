@@ -74,7 +74,7 @@ fun MoviesCarousel(
                     .padding(horizontal = 8.dp)
             ) {
                 MovieCard(
-                    imageRes = movie.imageRes,
+                    imageRes = movie.posterRes,
                     width = imageWidth,
                     height = imageHeight,
                     onImageClick = navigateMovie

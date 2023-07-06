@@ -2,6 +2,7 @@ package com.example.cinematicketreservation.presentation.ui.screen.movie_details
 
 import android.content.Intent
 import android.net.Uri
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -15,21 +16,21 @@ import androidx.core.content.ContextCompat.startActivity
 import com.example.cinematicketreservation.R
 
 @Composable
-fun UpperSection(onClickClose: () -> Unit) {
+fun UpperSection(onClickClose: () -> Unit,@DrawableRes moviePoster:Int,youtubeKey:String) {
     val context = LocalContext.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .fillMaxHeight(0.5f)
     ) {
-        MovieImage(image = R.drawable.image_4, modifier = Modifier.align(Alignment.TopStart))
+        MovieImage(image = moviePoster, modifier = Modifier.align(Alignment.TopStart))
         PlayButton(modifier = Modifier
             .align(Alignment.Center)
             .clickable {
                 val intent =
                     Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("https://www.youtube.com/watch?v=roJ0ZpDwAeY")
+                        Uri.parse("https://www.youtube.com/watch?v=$youtubeKey")
                     )
                 startActivity(context,intent,null)
             })
@@ -40,5 +41,5 @@ fun UpperSection(onClickClose: () -> Unit) {
 @Preview(showSystemUi = true)
 @Composable
 fun UpperSectionPreview() {
-    UpperSection() {}
+    UpperSection(moviePoster = R.drawable.image_7, onClickClose = {}, youtubeKey = "")
 }
