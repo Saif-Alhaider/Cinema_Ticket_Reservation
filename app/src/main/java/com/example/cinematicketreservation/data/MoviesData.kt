@@ -2,7 +2,7 @@ package com.example.cinematicketreservation.data
 
 import android.content.Context
 import com.example.cinematicketreservation.R
-import com.example.cinematicketreservation.presentation.viewModel.MovieUiState
+import com.example.cinematicketreservation.presentation.viewModel.state.MovieUiState
 import javax.inject.Inject
 
 

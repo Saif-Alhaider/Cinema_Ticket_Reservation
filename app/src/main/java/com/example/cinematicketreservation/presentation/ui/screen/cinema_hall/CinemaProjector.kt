@@ -1,5 +1,6 @@
 package com.example.cinematicketreservation.presentation.ui.screen.cinema_hall
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
@@ -22,7 +23,7 @@ import com.example.cinematicketreservation.R
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CinemaProjector() {
+fun CinemaProjector(@DrawableRes backDropImageRes:Int) {
     Box(
         Modifier
             .fillMaxWidth()
@@ -32,7 +33,7 @@ fun CinemaProjector() {
             .background(Color.Red.copy(alpha = .6f))
     ) {
         Image(
-            painter = painterResource(id = R.drawable.image_5),
+            painter = painterResource(id = backDropImageRes),
             contentDescription = "image",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()
@@ -64,5 +65,5 @@ fun CinemaProjector() {
 @Preview
 @Composable
 fun CinemaProjectorPreview() {
-    CinemaProjector()
+    CinemaProjector(R.drawable.image_5)
 }

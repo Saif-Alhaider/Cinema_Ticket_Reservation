@@ -1,8 +1,8 @@
 package com.example.cinematicketreservation.presentation.viewModel
 
 import androidx.lifecycle.ViewModel
-import com.example.cinematicketreservation.R
 import com.example.cinematicketreservation.data.MoviesData
+import com.example.cinematicketreservation.presentation.viewModel.state.MovieUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -25,22 +25,24 @@ import com.example.cinematicketreservation.presentation.ui.component.MovieTime
 import com.example.cinematicketreservation.presentation.ui.component.MovieTitle
 import com.example.cinematicketreservation.presentation.ui.component.SpacerVertical16Dp
 import com.example.cinematicketreservation.presentation.ui.component.SpacerVertical32Dp
+import com.example.cinematicketreservation.presentation.ui.screen.movie_details.navigateToMovieDetails
 import com.example.cinematicketreservation.presentation.viewModel.HomeViewModel
-import com.example.cinematicketreservation.presentation.viewModel.MovieUiState
+import com.example.cinematicketreservation.presentation.viewModel.state.MovieUiState
 
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), navController: NavController) {
+    val movie = viewModel.state.collectAsState().value
     HomeContent(
         viewModel.moviesData.data,
-        viewModel.state.collectAsState(),
+        movie,
         viewModel::updateState
-    ) { navController.navigate(AppDestination.MovieDetails.route) }
+    ) { navController.navigateToMovieDetails(movie.title) }
 }
 
 @Composable
 fun HomeContent(
     moviesData: List<MovieUiState>,
-    screenState: State<MovieUiState>,
+    screenState: MovieUiState,
     updateUiState: (Int) -> Unit,
     navigateMovie: () -> Unit
 ) {
@@ -61,7 +63,7 @@ fun HomeContent(
     ) {
         item {
             Box() {
-                HomeBackGround(screenState.value.imageRes)
+                HomeBackGround(screenState.imageRes)
                 Column(
                     Modifier.padding(top = 32.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -79,13 +81,13 @@ fun HomeContent(
                     SpacerVertical32Dp()
                     SpacerVertical32Dp()
                     MovieTime(
-                        screenState.value.duration,
+                        screenState.duration,
                         textColor = Color.Black.copy(alpha = .87f)
                     )
                     SpacerVertical16Dp()
-                    MovieTitle(screenState.value.title)
+                    MovieTitle(screenState.title)
                     SpacerVertical32Dp()
-                    Genre(screenState.value.genres)
+                    Genre(screenState.genres)
                 }
             }
         }
@@ -97,5 +99,5 @@ fun HomeContent(
 @Composable
 fun HomeContentPreview() {
     val movieUiState = remember { mutableStateOf(MovieUiState()) }
-    HomeContent(emptyList(), movieUiState,{},{})
+    HomeContent(emptyList(), movieUiState.value,{},{})
 }

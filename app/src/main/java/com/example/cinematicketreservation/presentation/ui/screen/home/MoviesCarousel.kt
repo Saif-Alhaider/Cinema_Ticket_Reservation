@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -20,7 +19,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.cinematicketreservation.presentation.ui.component.MovieCard
-import com.example.cinematicketreservation.presentation.viewModel.MovieUiState
+import com.example.cinematicketreservation.presentation.viewModel.state.MovieUiState
 import kotlinx.coroutines.flow.distinctUntilChanged
 
 @OptIn(ExperimentalFoundationApi::class)
