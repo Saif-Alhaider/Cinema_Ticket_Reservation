@@ -33,11 +33,10 @@ class CinemaHallViewModel @Inject constructor(
     fun addSeats(seatId: String) {
         val updateList = _state.value.seats.toMutableList()
         if (_state.value.seats.any { seatId == it.id }) {
-            updateList.addAll(_state.value.seats.filterNot { seatId == it.id })
+            updateList.removeIf{it.id == seatId}
         } else {
             updateList.add(CinemaHallUiState.Seat(id = seatId))
         }
         _state.update { it.copy(seats = updateList) }
-        Log.i("gg", "seats: ${_state.value.seats}")
     }
 }

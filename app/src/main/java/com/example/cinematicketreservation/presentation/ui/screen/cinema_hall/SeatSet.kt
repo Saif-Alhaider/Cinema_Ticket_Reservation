@@ -44,8 +44,10 @@ fun SeatSet(
                 contentDescription = "cinema seat",
                 colorFilter = ColorFilter.tint(color = if (seatSet.first.isTaken) Color(0xFF404040) else firstSeatColor),
                 modifier = Modifier.clickable {
-                    if (!seatSet.first.isTaken) isFirstSeatActive.value = !isFirstSeatActive.value
-                    onSeatClick(seatSet.first.id)
+                    if (!seatSet.first.isTaken) {
+                        isFirstSeatActive.value = !isFirstSeatActive.value
+                        onSeatClick(seatSet.first.id)
+                    }
                 }
             )
             Image(
@@ -53,9 +55,11 @@ fun SeatSet(
                 contentDescription = "cinema seat",
                 colorFilter = ColorFilter.tint(color = if (seatSet.second.isTaken) Color(0XFF404040) else secondSeatColor),
                 modifier = Modifier.clickable {
-                    if (!seatSet.second.isTaken) isSecondSeatActive.value =
-                        !isSecondSeatActive.value
-                    onSeatClick(seatSet.second.id)
+                    if (!seatSet.second.isTaken) {
+                        isSecondSeatActive.value =
+                            !isSecondSeatActive.value
+                        onSeatClick(seatSet.second.id)
+                    }
                 }
             )
         }
