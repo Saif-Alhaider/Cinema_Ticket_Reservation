@@ -47,6 +47,7 @@ To run the Cinema Ticket App on your local machine, follow these steps:
 ## Acknowledgments
 
 - Original design by [Bogdan Nikitin](https://dribbble.com/bogdan_nikitin).
+- Special thanks to [Bareq-altaamah](https://github.com/Bareq-altaamah) for his help in compose.
 - Thanks to the Jetpack Compose community for their contributions and support.
 
 Feel free to contribute to this project by submitting bug reports, feature requests, or pull requests.
